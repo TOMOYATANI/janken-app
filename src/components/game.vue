@@ -6,10 +6,10 @@
       <span class="text">{{ resultText }}</span>
     </div>
     <div class="img-area">
-      <div v-if="pon">
-        <img v-if="this.bot === 0" src="../assets/guu.jpg" />
-        <img v-if="this.bot === 1" src="../assets/choki.jpg" />
-        <img v-if="this.bot === 2" src="../assets/paa.jpg" />
+      <div class="img-inner" v-if="pon">
+        <img class="scope" v-if="this.bot === 0" src="../assets/guu.jpg" />
+        <img class="scope" v-if="this.bot === 1" src="../assets/choki.jpg" />
+        <img class="scope" v-if="this.bot === 2" src="../assets/paa.jpg" />
       </div>
       <div v-else>
         <img class="animation" src="../assets/guu.jpg" />
@@ -23,9 +23,7 @@
       v-for="item in shapes"
       :key="item.key"
       @click="select(item.key)"
-    >
-      {{ item.label }}
-    </button>
+    >{{ item.label }}</button>
     <br />
   </div>
 </template>
@@ -33,7 +31,7 @@
 <script>
 export default {
   name: "Game",
-  props: ['scores'],
+  props: ["scores"],
   data() {
     return {
       resultText: "",
@@ -42,8 +40,8 @@ export default {
       shapes: [
         { label: "グー", key: 0, state: false },
         { label: "チョキ", key: 1, state: false },
-        { label: "パー", key: 2, state: false },
-      ],
+        { label: "パー", key: 2, state: false }
+      ]
     };
   },
   methods: {
@@ -73,14 +71,16 @@ export default {
       this.shapes = [
         { label: "グー", key: 0, state: false },
         { label: "チョキ", key: 1, state: false },
-        { label: "パー", key: 2, state: false },
+        { label: "パー", key: 2, state: false }
       ];
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
 .title {
   font-size: 30px;
   font-weight: bold;
@@ -117,6 +117,16 @@ export default {
   }
 }
 
+.img-inner {
+  position: relative;
+  .scope {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .btn-item {
   margin: 10px 5px;
   padding: 5px;
@@ -127,12 +137,20 @@ export default {
   border: none;
   outline: none;
   border-radius: 0;
-  background: rgb(165, 211, 255);
+  background: rgb(91, 174, 252);
+  border-radius: 2rem;
+  font-family: "VT323", monospace;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
 }
 
 .btn-item:hover {
   color: rgb(0, 0, 0);
-  background: rgba(113, 179, 255, 0.795);
+  background: rgba(26, 111, 209, 0.856);
+  border-radius: 2rem;
+  font-family: "VT323", monospace;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
 }
 
 .btn-retry {
@@ -145,12 +163,20 @@ export default {
   border: none;
   outline: none;
   border-radius: 0;
-  background: rgb(165, 211, 255);
+  background: rgb(91, 174, 252);
+  border-radius: 2rem;
+  font-family: "VT323", monospace;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
 }
 
 .btn-retry:hover {
   color: rgb(0, 0, 0);
-  background: rgba(113, 179, 255, 0.795);
+  background: rgba(26, 111, 209, 0.856);
+  border-radius: 2rem;
+  font-family: "VT323", monospace;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
 }
 
 .text-inner {
